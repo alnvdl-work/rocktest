@@ -1,0 +1,23 @@
+name: cmd1
+base: "ubuntu@22.04"
+version: latest
+summary: Testing
+description: ...
+license: proprietary
+platforms:
+  amd64:
+
+parts:
+  cmd1:
+    plugin: go
+    source-type: local
+    source: .
+    override-build: |
+      pwd
+      ls -lah .
+      ls -lah project
+      go install ./cmd/cmd1
+    stage:
+    - bin/cmd1
+    build-snaps:
+    - go
